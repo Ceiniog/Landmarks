@@ -1,0 +1,41 @@
+name: Landmarks
+main: me.meibion.Landmarks.Main
+version: 1.0
+author: Meibion
+api-version: 1.7.3
+commands:
+  lmkregister:
+    description: Registers a new landmark
+    usage: /<command> [landmark_name]
+    aliases: [landmarkregister, lmkcreate, landmarkcreate]
+  lmktp:
+    description: Teleports a user to a landmark
+    usage: /<command> [landmark_name]
+    aliases: [lmk, landmark, landmarktp]
+  lmkdelete:
+    description: Deletes a landmark
+    usage: /<command> [landmark_name]
+    aliases: [landmarkdelete, lmkremove, landmarkremove]
+  lmks:
+    description: Outputs a list of landmarks
+    usage: /<command>
+    aliases: [landmarks, lmklist, landmarklist, lmkslist, landmarkslist]
+permissions:
+  Landmarks.register.single:
+    description: Allows a user to register a single new landmark.
+    default: op
+  Landmarks.register.multiple:
+    description: Allows a user to register an unlimited quantity of new landmark.
+    default: op
+  Landmarks.teleport:
+    description: Allows a user to teleport to a landmark.
+    default: op
+  Landmarks.delete.self:
+    description: Allows a user to delete landmarks created by the same user
+    default: op
+  Landmarks.delete.others:
+    description: Allows a user to delete landmarks created by other users
+    default: op
+  Landmarks.view:
+    description: Allows a user to see a list of landmarks
+    default: op

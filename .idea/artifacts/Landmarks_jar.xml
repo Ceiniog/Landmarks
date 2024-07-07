@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Landmarks:jar">
+    <output-path>F:/Minecraft Servers/Beta 1.7.3/Server Jar/plugins</output-path>
+    <root id="archive" name="Landmarks.jar">
+      <element id="module-output" name="Landmarks" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Dependencies/MeibionsStorageUtils.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
