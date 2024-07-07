@@ -1,6 +1,7 @@
 package me.meibion.Landmarks.commands;
 
 import me.meibion.Landmarks.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,10 +10,9 @@ import org.bukkit.entity.Player;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class LmkList implements CommandExecutor {
+public class LmkCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
@@ -26,14 +26,23 @@ public class LmkList implements CommandExecutor {
         // Get the player
         Player player = (Player) commandSender;
 
+        if (args.length == 1) {
+            Bukkit.getServer().dispatchCommand(player, "lmktp " + args[0]);
+            return true;
+        }
+        else if(args.length != 0) {
+            player.sendMessage(ChatColor.RED + "Incorrect usage /lmk (LandmarkName)");
+            return true;
+        }
+
         // Check if the player has permissions
-        if(!player.hasPermission("Landmarks.view")) {
+        if(!player.hasPermission("Landmarks.View")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
             return true;
         }
 
         // Get a list of landmark names
-        List<String> lmkNames = new ArrayList<String>();
+        List<String> lmkNames = new ArrayList<>();
         Main.landmarksMap.forEach((key, value) -> lmkNames.add(key));
 
         // Check if there are any landmarks

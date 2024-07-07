@@ -1,7 +1,7 @@
 package me.meibion.Landmarks;
 
 import me.meibion.Landmarks.commands.LmkDelete;
-import me.meibion.Landmarks.commands.LmkList;
+import me.meibion.Landmarks.commands.LmkCommand;
 import me.meibion.Landmarks.commands.LmkRegisterCommand;
 import me.meibion.Landmarks.commands.LmkTPCommand;
 import me.meibion.Landmarks.events.CancelTeleport;
@@ -62,7 +62,7 @@ public class Main extends JavaPlugin {
         getCommand("lmkregister").setExecutor(new LmkRegisterCommand()); // Create a new landmark
         getCommand("lmktp").setExecutor(new LmkTPCommand()); // Teleports a player to a landmark
         getCommand("lmkdelete").setExecutor(new LmkDelete()); // Deletes a landmark
-        getCommand("lmks").setExecutor(new LmkList()); // Lists all landmarks
+        getCommand("lmks").setExecutor(new LmkCommand()); // Lists all landmarks
 
         // EVENT LISTENERS
         Bukkit.getPluginManager().registerEvent(Event.Type.PLAYER_MOVE, new CancelTeleport().pl, Event.Priority.Normal, this); // Cancels the tp if the player moves

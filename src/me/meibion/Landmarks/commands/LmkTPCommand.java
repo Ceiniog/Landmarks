@@ -2,10 +2,7 @@ package me.meibion.Landmarks.commands;
 
 import me.meibion.Landmarks.Main;
 import me.meibion.Landmarks.scheduled.TeleportPlayer;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Chunk;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -59,7 +56,7 @@ public class LmkTPCommand implements CommandExecutor {
         // Pre-load chunk
         World world = Bukkit.getWorld(landmark.get("world"));
         Chunk chunk = world.getChunkAt((Integer.parseInt(landmark.get("x"))), Integer.parseInt(landmark.get("z")));
-        if(!chunk.isLoaded()) { chunk.load(); }
+        chunk.load();
 
         // Get player coords (will be used to check if the player has moved since starting the tp request)
         int playerX = player.getLocation().getBlockX();
@@ -67,9 +64,10 @@ public class LmkTPCommand implements CommandExecutor {
 
         // Teleport player
         BukkitScheduler scheduler = getServer().getScheduler();
-        int task = scheduler.scheduleSyncDelayedTask(new Main(), new TeleportPlayer(player, landmark), 5 * 20); // Teleport the player in 5 seconds
+        int task = scheduler.scheduleSyncDelayedTask(new Main(), new TeleportPlayer(player, landmark), 10 * 20); // Teleport the player in 10 seconds
         Main.tpPending.put(player.getUniqueId(), new int[] {task, playerX, playerZ}); // Put the task in the tp tasks list + player coords
-        player.sendMessage(ChatColor.GRAY + "You will be teleported in 5 seconds. Do not move.");
+
+        player.sendMessage(ChatColor.GRAY + "You will be teleported in 10 seconds. Do not move.");
 
         return true;
     }

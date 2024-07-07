@@ -1,6 +1,6 @@
 name: Landmarks
 main: me.meibion.Landmarks.Main
-version: 1.0
+version: 1.1
 author: Meibion
 api-version: 1.7.3
 commands:
@@ -11,7 +11,7 @@ commands:
   lmktp:
     description: Teleports a user to a landmark
     usage: /<command> [landmark_name]
-    aliases: [lmk, landmark, landmarktp]
+    aliases: [landmark, landmarktp]
   lmkdelete:
     description: Deletes a landmark
     usage: /<command> [landmark_name]
@@ -19,7 +19,7 @@ commands:
   lmks:
     description: Outputs a list of landmarks
     usage: /<command>
-    aliases: [landmarks, lmklist, landmarklist, lmkslist, landmarkslist]
+    aliases: [lmk, landmarks, lmklist, landmarklist, lmkslist, landmarkslist]
 permissions:
   Landmarks.register.single:
     description: Allows a user to register a single new landmark.
